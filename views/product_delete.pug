@@ -1,0 +1,10 @@
+extends layout 
+
+block content 
+    h1 #{title} 
+
+    p Are you sure you want to delete this #[strong #{product.name}] by #[strong #{product.brand.name}]
+
+    form(method='POST' action='')
+        input#productid(type='hidden' name='productid' required='true' value=product._id)
+        button(type='submit') Delete

@@ -49,9 +49,19 @@ exports.product_update_post = asyncHandler(async (req, res, next) => {
 
     /// DELETE PRODUCT GET AND POST ///
 exports.product_delete_get = asyncHandler(async (req, res, next) => {
+    const product = await Product.findById(req.params.id).populate('brand').exec();
 
+    if (product === null) {
+        res.redirect('/products')
+    }
+
+    res.render('product_delete', {
+        title: 'Delete ' + product.name,
+        product: product,
+    })
 });
 
 exports.product_delete_post = asyncHandler(async (req, res, next) => {
-
+    await Product.findByIdAndRemove(req.body.productid);
+    res.redirect('/products');
 });

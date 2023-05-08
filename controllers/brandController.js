@@ -53,9 +53,37 @@ exports.brand_update_post = asyncHandler(async (req, res, next) => {
 
     /// DELETE BRAND GET AND POST ///
 exports.brand_delete_get = asyncHandler(async (req, res, next) => {
+    const [brand, allProductsInBrand] = await Promise.all([
+        Brand.findById(req.params.id).exec(),
+        Product.find({ brand: req.params.id }, 'name category').populate('category').exec()
+    ]);
 
+    if (brand === null) {
+        res.redirect('/brands')
+    }
+
+    res.render('brand_delete', {
+        title: 'Delete ' + brand.name,
+        brand: brand,
+        brand_products: allProductsInBrand
+    });
 });
 
 exports.brand_delete_post = asyncHandler(async (req, res, next) => {
+    const [brand, allProductsInBrand] = await Promise.all([
+        Brand.findById(req.params.id).exec(),
+        Product.find({ brand: req.params.id }, 'name category').populate('category').exec()
+    ]);
 
+    if (allProductsInBrand.length > 0) {
+        res.render('brand_delete', {
+            title: 'Delete ' + brand.name,
+            brand: brand,
+            brand_products: allProductsInBrand
+        });
+        return;
+    } else {
+        await Brand.findByIdAndRemove(req.body.brandid);
+        res.redirect('/brands');
+    }
 });

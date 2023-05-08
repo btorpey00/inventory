@@ -7,3 +7,5 @@ block content
     p Number in Stock: #{product.quantity} 
     p Manufacturer: #{product.brand.name}
     p Category: #{product.category.name}
+
+    a(href=product.url+'/delete') <button>Delete Product</button>

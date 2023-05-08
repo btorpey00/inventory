@@ -1,0 +1,20 @@
+extends layout 
+
+block content 
+    h1 #{title} 
+
+    if category_products.length 
+        p You must first delete the following products: 
+
+        ul 
+            each product in category_products 
+                li 
+                    a(href=product.url) #{product.name}
+                    p #{product.brand.name}
+    
+    else 
+        p Are you sure you want to delete this category?
+
+        form(method='POST' action='')
+            input#categoryid(type='hidden' name='categoryid' required='true' value=category._id)
+            button(type='submit') Delete
