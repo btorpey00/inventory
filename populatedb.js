@@ -105,7 +105,7 @@ console.log(
         'Orange Shirt',
         'Wonderful orange shirt that will keep you looking and feeling cool',
         "8",
-        brands[3],
+        brands[2],
         categories[0]
       ),
 

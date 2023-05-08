@@ -2,4 +2,10 @@ extends layout
 
 block content 
     h1= title 
-    p This will list all of the brands
+    ul 
+        for brand in brand_list 
+            li 
+                a(href=brand.url) #{brand.name}
+        
+        else 
+            li No brands found

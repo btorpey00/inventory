@@ -2,4 +2,11 @@ extends layout
 
 block content 
     h1= title 
-    p This will list all of the products
+    ul 
+        for product in product_list 
+            li 
+                a(href=product.url) #{product.name}
+                p= product.brand.name
+        
+        else 
+            li No products found
