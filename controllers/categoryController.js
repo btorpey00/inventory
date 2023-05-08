@@ -44,9 +44,9 @@ exports.category_create_get = asyncHandler(async (req, res, next) => {
 
 exports.category_create_post = [
     body('name', 'Category name is required')
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
     
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
@@ -93,9 +93,9 @@ exports.category_update_get = asyncHandler(async (req, res, next) => {
 
 exports.category_update_post = [
     body('name', 'Category name is required')
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
     
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
@@ -107,7 +107,7 @@ exports.category_update_post = [
 
         if(!errors.isEmpty()) {
             res.render('category_form', {
-                title: 'Create Category',
+                title: 'Update ' + category.name,
                 category: category,
                 errors: errors.array(),
                 button_text: 'Update Category'

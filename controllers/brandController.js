@@ -44,9 +44,9 @@ exports.brand_create_get = asyncHandler(async (req, res, next) => {
 
 exports.brand_create_post = [
     body('name', 'Brand name is required')
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
 
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);
@@ -92,9 +92,9 @@ exports.brand_update_get = asyncHandler(async (req, res, next) => {
 
 exports.brand_update_post = [
     body('name', 'Brand name is required')
-    .trim()
-    .isLength({ min: 1 })
-    .escape(),
+        .trim()
+        .isLength({ min: 1 })
+        .escape(),
 
     asyncHandler(async (req, res, next) => {
         const errors = validationResult(req);

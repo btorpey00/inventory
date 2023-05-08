@@ -1,0 +1,39 @@
+extends layout 
+
+block content 
+    h1 #{title} 
+
+    form(method='POST' action='')
+        label(for='name') Product Name: 
+        input#name(type='text' name='name' required='true' value=(product===undefined ? '' : product.name))
+
+        label(for='description') Description: 
+        textarea#description(type='textarea' name='description' required='true') #{product===undefined ? '' : product.description}
+
+        label(for='quantity') Quantity: 
+        input#quantity(type='number' name='quantity' required='true' value=(product===undefined ? 1 : product.quantity))
+
+        label(for='brand') Brand: 
+        select#brand(type='select' name='brand' required='true')
+            option(value='' disabled selected) Select Brand
+            for brand in all_brands 
+                if product 
+                    option(value=brand._id selected=(brand._id.toString()===product.brand.id.toString() ? 'selected' : false)) #{brand.name} 
+                else 
+                    option(value=brand._id) #{brand.name}
+
+        label(for='category') Category: 
+        select#category(type='select' name='category' required='true')
+            option(value='' disabled selected) Select Category
+            for category in all_categories 
+                if product  
+                    option(value=category._id selected=(category._id.toString()===product.category.id.toString() ? 'selected' : false)) #{category.name} 
+                else 
+                    option(value=category._id) #{category.name}
+
+        button(type='submit') #{button_text}
+
+    if errors 
+        ul 
+            for error in errors 
+                li!= error.msg
