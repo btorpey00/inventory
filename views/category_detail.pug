@@ -3,14 +3,16 @@ extends layout
 block content 
     h1 #{category.name}
 
-    for brand in all_brands 
-        h2 #{brand.name}
-        ul
-            for product in category_products 
-                if product.brand.name == brand.name
-                    li 
-                        a(href=product.url) #{product.name}
-            else 
-                li #{brand.name} makes no #{category.name}
+    if category_products.length > 0
+        for brand in all_brands 
+            h2 Brand: #{brand.name}
+            ul
+                for product in category_products 
+                    if product.brand.name == brand.name
+                        li 
+                            a(href=product.url) #{product.name}
+    else 
+        li The "#{category.name}" category contains no products
 
+    a(href=category.url+'/update') <button>Update Category</button>
     a(href=category.url+'/delete') <button>Delete Category</button>

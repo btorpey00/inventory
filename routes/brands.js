@@ -3,7 +3,6 @@ var router = express.Router();
 
 const brand_controller = require('../controllers/brandController');
 
-
 router.get('/', brand_controller.brand_list);
 
 router.get('/create', brand_controller.brand_create_get);

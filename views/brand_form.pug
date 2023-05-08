@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+    h1 #{title} 
+
+    form(method='POST' action='')
+        label(for=name) Brand: 
+        input#name(type='text' name='name' value=(brand===undefined ? '' : brand.name))
+
+        button(type='submit') #{button_text}
+
+    if errors 
+        ul 
+            for error in errors 
+                li!= error.msg
