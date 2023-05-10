@@ -3,10 +3,11 @@ extends layout
 block content 
     h1 #{title} 
 
-    p #{product.description}
-    p Number in Stock: #{product.quantity} 
-    p Manufacturer: #{product.brand.name}
-    p Category: #{product.category.name}
+    div.product-detail-container
+        p #{product.description}
+        p Number in Stock: #{product.quantity} 
+        p Manufacturer: #{product.brand.name}
+        p Category: #{product.category.name}
 
-    a(href=product.url+'/update') <button>Update Product</button>
-    a(href=product.url+'/delete') <button>Delete Product</button>
+    a.link-button(href=product.url+'/update') Update Product
+    a.link-button(href=product.url+'/delete') Delete Product

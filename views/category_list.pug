@@ -4,7 +4,7 @@ block content
     h1= title 
     ul 
         for category in category_list 
-            li 
+            li.text-item 
                 a(href=category.url) #{category.name}
         else 
-            li No categories found
+            li.text-item No categories found

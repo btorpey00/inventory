@@ -5,14 +5,14 @@ block content
 
     if brand_products.length > 0
         for category in all_categories 
-            h2 Category: #{category.name}
-            ul
+            h2 #{category.name}
+            ul.detail-group
                 for product in brand_products 
                     if product.category.name == category.name
-                        li 
+                        li.detail-item 
                             a(href=product.url) #{product.name}
     else 
         li There are no products made by #{brand.name}
 
-    a(href=brand.url+'/update') <button>Update Brand</button>
-    a(href=brand.url+'/delete') <button>Delete Brand</button>
+    a.link-button(href=brand.url+'/update') Update Brand
+    a.link-button(href=brand.url+'/delete') Delete Brand

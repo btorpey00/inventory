@@ -4,10 +4,11 @@ block content
     h1 #{title} 
 
     form(method='POST' action='')
-        label(for=name) Category: 
-        input#name(type='text' name='name' value=(category===undefined ? '' : category.name))
+        div.form-group
+            label(for=name) Category: 
+            input#name.form-name(type='text' name='name' value=(category===undefined ? '' : category.name))
 
-        button(type='submit') #{button_text} 
+        button.submit(type='submit') #{button_text} 
 
     if errors 
         ul 

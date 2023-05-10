@@ -3,15 +3,15 @@ extends layout
 block content 
     h1 #{title} 
 
-    form(method='POST' action='')
+    form.product-form(method='POST' action='')
         label(for='name') Product Name: 
         input#name(type='text' name='name' required='true' value=(product===undefined ? '' : product.name))
 
         label(for='description') Description: 
-        textarea#description(type='textarea' name='description' required='true') #{product===undefined ? '' : product.description}
+        textarea#description(type='textarea' name='description' required='true' rows=5) #{product===undefined ? '' : product.description}
 
         label(for='quantity') Quantity: 
-        input#quantity(type='number' name='quantity' required='true' value=(product===undefined ? 1 : product.quantity))
+        input#quantity(type='number' name='quantity' required='true' min=1 max=999999 value=(product===undefined ? 1 : product.quantity))
 
         label(for='brand') Brand: 
         select#brand(type='select' name='brand' required='true')
@@ -31,7 +31,7 @@ block content
                 else 
                     option(value=category._id) #{category.name}
 
-        button(type='submit') #{button_text}
+        button.product-submit.submit(type='submit') #{button_text}
 
     if errors 
         ul 

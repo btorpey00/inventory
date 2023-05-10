@@ -3,22 +3,26 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/javascripts/script.js' defer) 
   body
-    ul 
-      li 
-        a(href = '/') Home
-      li 
-        a(href = '/brands') Brands 
-      li
-        a(href = '/products') Products 
-      li
-        a(href = '/categories') Categories
+    nav
+        ul 
+          li
+            a.nav-item(href = '/') Home
+          li
+            a.nav-item(href = '/brands') Brands 
+          li
+            a.nav-item(href = '/products') Products 
+          li
+            a.nav-item(href = '/categories') Categories
 
-    ul
-      li 
-        a(href = '/products/create') Add New Product
-      li 
-        a(href = '/brands/create') Add New Brand
-      li 
-        a(href = '/categories/create') Add New Category
-    block content
+        ul
+          li
+            a.nav-item(href = '/products/create') Add New Product
+          li
+            a.nav-item(href = '/brands/create') Add New Brand
+          li
+            a.nav-item(href = '/categories/create') Add New Category
+    main
+      div.main-content
+        block content

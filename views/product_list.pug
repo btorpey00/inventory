@@ -2,11 +2,12 @@ extends layout
 
 block content 
     h1= title 
-    ul 
+    ul.product-list 
         for product in product_list 
-            li 
-                a(href=product.url) #{product.name}
-                p= product.brand.name
+            li.text-item 
+                div.product-group
+                    a(href=product.url) #{product.name}
+                    p by #{product.brand.name}
         
         else 
             li No products found
